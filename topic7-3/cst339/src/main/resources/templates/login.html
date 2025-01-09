@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Login</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>CST-339 Spring Boot Activity Application</title>
+</head>
+<body>
+    <!-- Include the common header -->
+    <div th:replace="~{layouts/common :: header}"></div>
+
+    <!-- Login Form -->
+    <div class="container">
+        <h2 th:text="${title}">Login</h2>
+        <form th:action="@{/login}" method="post">
+            <table class="table">
+                <tr>
+                    <td>User Name:</td>
+                    <td><input type="text" name="username" required="required" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" required="required" class="form-control"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </td>
+                </tr>
+            </table>
+        </form>
+
+        <!-- Error Message -->
+        <div th:if="${param.error}" class="alert alert-danger">
+            Invalid User Name or Password
+        </div>
+    </div>
+
+    <!-- Include the common footer -->
+    <div th:replace="~{layouts/common :: footer}"></div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>

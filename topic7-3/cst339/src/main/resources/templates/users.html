@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Home</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <title>CST-339 Spring Boot Activity Application</title>
+</head>
+<body>
+    <!-- Include the common header -->
+    <div th:replace="~{layouts/common :: header}"></div>
+
+    <!-- Home Content -->
+    <div layout:fragment="content">
+        <table style="width:15%">
+            <thead>
+                <tr>
+                    <th style="text-align: center;">User name</th>
+                    <th style="text-align: center;">Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${users.empty}">
+                    <td style="text-align: center;" colspan="4">No Users Available</td>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td style="text-align: center;"><h5 th:text="${user.username}">Kai</h5></td>
+                    <td style="text-align: center;"><h5 th:text="${user.password}">Hedrick</h5></td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{.}">Go Home</a><br/>
+    </div>
+
+    <!-- Include the common footer -->
+    <div th:replace="~{layouts/common :: footer}"></div>
+
+    <!-- Include jQuery and Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
